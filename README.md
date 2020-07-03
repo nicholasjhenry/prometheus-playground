@@ -5,6 +5,7 @@ https://prometheus.io/docs/introduction/overview/
 ## Docs
 
 - Expression Language: https://prometheus.io/docs/prometheus/latest/querying/basics/
+- Configuration: https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
 ## Notes
 
@@ -45,3 +46,14 @@ https://prometheus.io/docs/concepts/metric_types/
 https://prometheus.io/docs/concepts/jobs_instances/
 
 - job with multiple instances
+- applied as labels: `job`, `instance`
+
+https://prometheus.io/docs/prometheus/latest/getting_started/
+
+- console
+    - `prometheus_target_interval_length_seconds`
+    - `count(prometheus_target_interval_length_seconds)`
+- graph
+    - `rate(prometheus_tsdb_head_chunks_created_total[1m])`
+- Setup node exporter, try `node_cpu_seconds_total`
+- graph `avg by (job, instance, mode) (rate(node_cpu_seconds_total[5m]))`

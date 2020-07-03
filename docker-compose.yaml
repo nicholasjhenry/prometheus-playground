@@ -3,6 +3,7 @@ version: "3"
 services:
   prometheus:
     image: prom/prometheus:v2.19.2
+    container_name: prometheus
     ports:
       - '9090:9090'
     volumes:
@@ -11,17 +12,40 @@ services:
     command:
       - '--config.file=/etc/prometheus/config.yml'
       - '--storage.tsdb.path=/prometheus'
+    depends_on:
+    - cadvisor
+
+  cadvisor:
+    image: gcr.io/google-containers/cadvisor:latest
+    container_name: cadvisor
+    ports:
+    - 8090:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+    - redis
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+    - 6379:6379
 
   node-1:
     image: prom/node-exporter:v1.0.1
+    container_name: node-1
     ports:
       - '8080:9100'
   node-2:
     image: prom/node-exporter:v1.0.1
+    container_name: node-2
     ports:
       - '8081:9100'
   node-3:
     image: prom/node-exporter:v1.0.1
+    container_name: node-3
     ports:
       - '8082:9100'
 

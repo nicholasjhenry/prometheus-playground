@@ -34,3 +34,9 @@ scrape_configs:
       - targets: ['node-3:9100']
         labels:
           group: 'canary'
+
+  - job_name: cadvisor
+    scrape_interval: 5s
+    static_configs:
+    - targets:
+      - cadvisor:8080

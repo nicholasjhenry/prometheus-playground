@@ -57,3 +57,16 @@ https://prometheus.io/docs/prometheus/latest/getting_started/
     - `rate(prometheus_tsdb_head_chunks_created_total[1m])`
 - Setup node exporter, try `node_cpu_seconds_total`
 - graph `avg by (job, instance, mode) (rate(node_cpu_seconds_total[5m]))`
+
+https://prometheus.io/docs/guides/cadvisor/
+
+- http://localhost:8090 (not the default port of `8080`)
+- http://localhost:8090/docker/redis
+- http://localhost:9090/graph
+  - `container_start_time_seconds`
+  - `container_start_time_seconds{name="redis"}`
+  - `rate(container_cpu_usage_seconds_total{name="redis"}[1m])`
+  - `container_memory_usage_bytes{name="redis"}`
+  - `rate(container_network_transmit_bytes_total[1m])`
+  - `rate(container_network_receive_bytes_total[1m])`
+- docs: https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md

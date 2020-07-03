@@ -32,12 +32,14 @@ https://prometheus.io/docs/concepts/metric_types/
 
 - metric types: counter, gauge, histogram, summary
 - counter: a cumulative metric
-- gauge: "represents a single numerical value that can arbitrarily go up and down", e.g. temperatures, current memory usage, number of concurrent requests (count)
-- histogram: samples observations, counts in configurable buckets, e.g. request durations, response sizes
+- gauge (a unit): "represents a single numerical value that can arbitrarily go up and down", e.g. temperatures, current memory usage, number of concurrent requests (count)
+- histogram (time): samples observations, counts in configurable buckets, e.g. request durations, response sizes
     - cumulative counters: `<basename>_bucket{le="<upper inclusive bound>"}`
     - total sum: `<basename>_sum`
     - count: `<basename>_count`
     - `histogram_quantile()`
+    - https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile
+    - https://prometheus.io/docs/practices/histograms/
     - Apdex (Application Performance Index): https://en.wikipedia.org/wiki/Apdex
 - summary: a summary samples observations, e.g. request durations, response sizes
     - streaming quantiles: `<basename>{quantile="<φ>"}`

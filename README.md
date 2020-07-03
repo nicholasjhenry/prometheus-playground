@@ -6,6 +6,7 @@ https://prometheus.io/docs/introduction/overview/
 
 - Expression Language: https://prometheus.io/docs/prometheus/latest/querying/basics/
 - Configuration: https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+- Label Best Practices: https://prometheus.io/docs/practices/naming/#labels
 
 ## Notes
 
